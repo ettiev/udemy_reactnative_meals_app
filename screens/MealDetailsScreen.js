@@ -2,17 +2,29 @@ import { useLayoutEffect } from 'react';
 
 import { MEALS } from '../data/dummy-data';
 import MealDetail from '../components/MealDetail';
+import IconButton from '../components/IconButton';
 
 function MealDetailsScreen({ navigation, route }) {
     const mealId = route.params.mealId;
     const meal = MEALS.find((meal) => meal.id === mealId)
 
+    function headerButtonPressHandler() {
+        console.log('Pressed');
+    }
+
     useLayoutEffect(() => {
         const mealTitle = meal.title;
         navigation.setOptions({
-            title: mealTitle
+            title: mealTitle,
+            headerRight: () => {
+                return (<IconButton 
+                    onPress={ headerButtonPressHandler }
+                    icon={ 'star' }
+                    color={ 'white' }    
+                />)
+            }
         })
-    }, [mealId, navigation]);
+    }, [mealId, navigation, headerButtonPressHandler]);
 
     return (
         <MealDetail 

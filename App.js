@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
     // npm install @react-navigation/native
@@ -50,7 +50,13 @@ export default function App() {
           />
           <Stack.Screen 
             name='MealDetails' 
-            component={MealDetailsScreen} 
+            component={MealDetailsScreen}
+            // ADD IN HEADER IF DOES NOT NEED TO DO ANYTHING ON THIS SCREEN
+            // options={{
+            //   headerRight: () => {
+            //     return <Text>In the Header</Text>
+            //   }
+            // }} 
             // INSTEAD SET THE OPTIONS IN THE MEALS OVERVIEW SCREEN COMPONENT
             // options={ ({ route, navigation }) => {
             //   const catId = route.params.categoryId;

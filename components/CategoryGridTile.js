@@ -7,9 +7,8 @@ function CategoryGridTile({ title, color, onPress}) {
                 android_ripple={{color: '#ccc'}} 
                 style={ ({ pressed }) => [
                     styles.button, 
-                    pressed ? buttonPressed : null
-                    ]
-                }
+                    pressed ? styles.buttonPressed : null
+                ]}
                 onPress={onPress}
             >
                 <View style={ [styles.innerContainer, { backgroundColor: color }] }>
@@ -28,8 +27,8 @@ const styles = StyleSheet.create({
         margin: 16,
         height: 150,
         borderRadius: 8,
-        elevation: 4,
         backgroundColor: 'white',
+        elevation: 4,
         shadowColor: 'black',
         shadowOpacity: 0.25,
         shadowOffset: { width: 0, height: 2 },

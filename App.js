@@ -14,6 +14,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import FavoritesContextProvider from './store/context/favorites-context';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,63 +54,65 @@ export default function App() {
   return (
     <>
       <StatusBar style='light'/>
-      <NavigationContainer>
-        <Stack.Navigator 
-          initialRouteName='MealsCategories'
-          screenOptions={{
-              title: "All Categories",
-              headerStyle: { backgroundColor: '#082408' },
-              headerTintColor: 'white',
-              contentStyle: { backgroundColor: '#175217' }
-            }} 
-        >
-          <Stack.Screen 
-            name='Drawer' 
-            component={DrawerNavigator}
-            options={{
-              headerShown: false
-            }}
-            // INSTEAD SET THE OPTIONS ON STACK.NAVIGATOR (Before turned to a drawer navigator)
-            // options={{
-            //   title: "All Categories",
-            //   headerStyle: { backgroundColor: '#082408' },
-            //   headerTintColor: 'white',
-            //   contentStyle: { backgroundColor: '#175217' }
-            // }} 
-          />
-          <Stack.Screen 
-            name='MealsOverview' 
-            component={MealsOverviewScreen} 
-            // INSTEAD SET THE OPTIONS IN THE MEALS OVERVIEW SCREEN COMPONENT
-            // options={ ({ route, navigation }) => {
-            //   const catId = route.params.categoryId;
-            //   return {
-            //     title: catId
-            //   }
-            // }}   
-          />
-          <Stack.Screen 
-            name='MealDetails' 
-            component={MealDetailsScreen}
-            options={{
-              title: 'About the Meal'
-            }}
-            // ADD IN HEADER IF DOES NOT NEED TO DO ANYTHING ON THIS SCREEN
-            // options={{
-            //   headerRight: () => {
-            //     return <Text>In the Header</Text>
-            //   }
-            // }} 
-            // INSTEAD SET THE OPTIONS IN THE MEALS DETAILS SCREEN COMPONENT
-            // options={ ({ route, navigation }) => {
-            //   const catId = route.params.categoryId;
-            //   return {
-            //     title: catId
-            //   }
-            // }}   
-          />
-        </Stack.Navigator>  
-      </NavigationContainer>
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator 
+            initialRouteName='MealsCategories'
+            screenOptions={{
+                title: "All Categories",
+                headerStyle: { backgroundColor: '#082408' },
+                headerTintColor: 'white',
+                contentStyle: { backgroundColor: '#175217' }
+              }} 
+          >
+            <Stack.Screen 
+              name='Drawer' 
+              component={DrawerNavigator}
+              options={{
+                headerShown: false
+              }}
+              // INSTEAD SET THE OPTIONS ON STACK.NAVIGATOR (Before turned to a drawer navigator)
+              // options={{
+              //   title: "All Categories",
+              //   headerStyle: { backgroundColor: '#082408' },
+              //   headerTintColor: 'white',
+              //   contentStyle: { backgroundColor: '#175217' }
+              // }} 
+            />
+            <Stack.Screen 
+              name='MealsOverview' 
+              component={MealsOverviewScreen} 
+              // INSTEAD SET THE OPTIONS IN THE MEALS OVERVIEW SCREEN COMPONENT
+              // options={ ({ route, navigation }) => {
+              //   const catId = route.params.categoryId;
+              //   return {
+              //     title: catId
+              //   }
+              // }}   
+            />
+            <Stack.Screen 
+              name='MealDetails' 
+              component={MealDetailsScreen}
+              options={{
+                title: 'About the Meal'
+              }}
+              // ADD IN HEADER IF DOES NOT NEED TO DO ANYTHING ON THIS SCREEN
+              // options={{
+              //   headerRight: () => {
+              //     return <Text>In the Header</Text>
+              //   }
+              // }} 
+              // INSTEAD SET THE OPTIONS IN THE MEALS DETAILS SCREEN COMPONENT
+              // options={ ({ route, navigation }) => {
+              //   const catId = route.params.categoryId;
+              //   return {
+              //     title: catId
+              //   }
+              // }}   
+            />
+          </Stack.Navigator>  
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }

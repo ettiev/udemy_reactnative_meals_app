@@ -1,6 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, Image, Pressable, StyleSheet, Platform } from "react-native";
 
-function MealItem({ title, imageUrl, duration, complexity, affordability, pressHandler }) {
+function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
+    
+    const navigation = useNavigation();
+    
+    function pressHandler() {
+        navigation.navigate('MealDetails', {
+            mealId: id,
+        })    
+    }
     return (
         <View style={ styles.mealItem }>
             <Pressable 

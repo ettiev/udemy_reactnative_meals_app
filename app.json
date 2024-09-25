@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "udemy_reactnative_meals_app",
+    "name": "My Recipe App",
     "slug": "udemy_reactnative_meals_app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,16 +13,24 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "za.web.elevate.myrecipeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ae241051-ea17-486b-9574-56f90b1a0982"
+      }
     }
   }
 }
